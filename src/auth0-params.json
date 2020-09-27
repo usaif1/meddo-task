@@ -1,0 +1,8 @@
+{
+    "domain": "dev-s-8v2d26.us.auth0.com",
+    "clientId": "mjR76E2nnvFIut1DWgUavTXOeLCSh6xf",
+    "callbackUrl": "http://localhost:3000/dashboard",
+    "realm": "meddo-task",
+    "apiAudience": "https://dev-s-8v2d26.us.auth0.com/api/v2/",
+    "scope":"read:current_user update:current_user_metadata openid"
+  }
