@@ -58,6 +58,7 @@ const Home = (props) => {
 					className="form-input"
 					value={state.email}
 					onChange={onChangeHandler}
+					data-test="inputField"
 				/>
 				<label htmlFor="password" className="form-label">
 					Password
@@ -68,8 +69,9 @@ const Home = (props) => {
 					className="form-input"
 					value={state.password}
 					onChange={onChangeHandler}
+					data-test="inputField"
 				/>
-				<button type="submit" className="form-submit" data-testid="loginButton">
+				<button type="submit" className="form-submit" data-test="loginButton">
 					Login
 				</button>
 			</form>
