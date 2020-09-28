@@ -25,20 +25,39 @@ describe("home page", () => {
 		const button = findByDataTest(component, "loginButton")
 		expect(button.length).toBe(1)
 	})
+
+	it("should emit event on click", () => {
+		const component = shallow(<Home />)
+		const button = findByDataTest(component, "loginButton")
+		expect(button.length).toBe(1)
+	})
 })
 
 describe("dashboard", () => {
+	const mockFunc = jest.fn()
 	describe("user present", () => {
 		it("should render username", () => {
 			const component = shallow(<Dashboard />)
 			const heading = findByDataTest(component, "userName")
-			console.log(component)
 			expect(heading.length).toBe(1)
 		})
-		it("should render logout button", () => {
-			const component = shallow(<Dashboard />)
-			const button = findByDataTest(component, "logoutButton")
-			expect(button.length).toBe(1)
+
+		describe("button", () => {
+			const mockFunc = jest.fn()
+			it("should render logout button", () => {
+				const component = shallow(<Dashboard />)
+				const button = findByDataTest(component, "logoutButton")
+				expect(button.length).toBe(1)
+			})
+
+			it("should emit event on click", () => {
+				const component = shallow(<Dashboard />)
+				const button = findByDataTest(component, "logoutButton")
+				button.simulate("click")
+				console.log(button.simulate("click"))
+				const callback = mockFunc.mock.calls.length
+				expect(callback).toBe(1)
+			})
 		})
 	})
 })

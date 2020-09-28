@@ -20,13 +20,18 @@ const Dashboard = () => {
 	})
 
 	useEffect(() => {
-		auth0Client.client.userInfo(
-			window.localStorage.getItem("token"),
-			(err, user) => {
-				if (err) return alert("Error at dashboard")
-				setUser(user.name)
-			}
-		)
+		try {
+			auth0Client.client.userInfo(
+				window.localStorage.getItem("token"),
+				(err, user) => {
+					if (err) return alert("Error at dashboard")
+					setUser(user.name)
+				}
+			)
+		} catch (error) {
+			return alert("error")
+		}
+
 		//eslint-disable-next-line
 	}, [])
 
@@ -42,13 +47,15 @@ const Dashboard = () => {
 		window.localStorage.removeItem("token")
 	}
 
-	return (
+	return window.localStorage.getItem("token") ? (
 		<div>
 			<h1 data-test="userName">Welcome {state.user}</h1>
 			<button onClick={logoutHandler} data-test="logoutButton">
 				Logout
 			</button>
 		</div>
+	) : (
+		<p>Unauthorized</p>
 	)
 }
 
