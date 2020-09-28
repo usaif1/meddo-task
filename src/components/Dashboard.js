@@ -42,13 +42,13 @@ const Dashboard = () => {
 		window.localStorage.removeItem("token")
 	}
 
-	return state.user ? (
+	return (
 		<div>
-			<h1>Welcome {state.user}</h1>
-			<button onClick={logoutHandler}>Logout</button>
+			<h1 data-test="userName">Welcome {state.user}</h1>
+			<button onClick={logoutHandler} data-test="logoutButton">
+				Logout
+			</button>
 		</div>
-	) : (
-		<p>Loading...</p>
 	)
 }
 
