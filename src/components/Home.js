@@ -1,5 +1,5 @@
 //dependencies
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import auth0 from "auth0-js"
 
 //imports
@@ -15,10 +15,6 @@ const Home = (props) => {
 		scope: params.scope,
 		responseType: "token id_token",
 	})
-
-	useEffect(() => {
-		console.log(window.localStorage.getItem("token"))
-	}, [])
 
 	const [state, setState] = useState({
 		email: "",
@@ -38,7 +34,6 @@ const Home = (props) => {
 			},
 			(err, authResult) => {
 				if (err) return console.log("Error!", err.description)
-				console.log("Success", authResult)
 				window.localStorage.setItem("token", authResult.accessToken)
 				props.history.push("/dashboard")
 			}
@@ -74,7 +69,9 @@ const Home = (props) => {
 					value={state.password}
 					onChange={onChangeHandler}
 				/>
-				<input type="submit" value="Login" className="form-submit" />
+				<button type="submit" className="form-submit" data-testid="loginButton">
+					Login
+				</button>
 			</form>
 		</div>
 	)

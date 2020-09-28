@@ -25,7 +25,6 @@ const Dashboard = () => {
 			(err, user) => {
 				if (err) return alert("Error at dashboard")
 				setUser(user.name)
-				console.log(user)
 			}
 		)
 		//eslint-disable-next-line
@@ -45,11 +44,11 @@ const Dashboard = () => {
 
 	return state.user ? (
 		<div>
-			Welcome {state.user}
+			<h1>Welcome {state.user}</h1>
 			<button onClick={logoutHandler}>Logout</button>
 		</div>
 	) : (
-		<p>Error.. can't find name</p>
+		<p>Loading...</p>
 	)
 }
 
