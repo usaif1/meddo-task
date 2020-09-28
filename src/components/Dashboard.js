@@ -41,7 +41,7 @@ const Dashboard = () => {
 
 	const logoutHandler = (e) => {
 		auth0Client.logout({
-			returnTo: "http://localhost:3000/",
+			returnTo: "https://meddo-task.netlify.app/",
 		})
 
 		window.localStorage.removeItem("token")
